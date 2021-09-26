@@ -1,0 +1,57 @@
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+
+
+public void iphone() {
+		
+		System.setProperty("webdriver.chrome.driver", "C:\\Eclipse\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://www.amazon.in");
+		driver.manage().window().maximize();
+		driver.findElement(By.xpath("//input[@id='twotabsearchtextbox']")).sendKeys("Iphone 12 128 GB");
+		driver.findElement(By.cssSelector("#nav-search-submit-button")).click();
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		driver.findElement(By.xpath("//span[text()='New Apple iPhone 12 (128GB) - (Product) RED']")).click();
+		Set<String> windows = driver.getWindowHandles();
+		Iterator<String> Itr = windows.iterator();
+		String ParentId = Itr.next();
+		String ChildId = Itr.next();
+		driver.switchTo().window(ChildId);
+		System.out.println(driver.getTitle());
+		driver.findElement(By.id("add-to-cart-button")).click();
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		driver.findElement(By.xpath("//input[@aria-labelledby='attach-sidesheet-view-cart-button-announce']")).click();
+    driver.findElement(By.id("nav-global-location-popover-link")).click();
+		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+		driver.findElement(By.id("GLUXZipUpdateInput")).sendKeys("533101");
+		driver.findElement(By.id("GLUXZipUpdate")).click();
+		driver.findElement(By.xpath("//input[@name='proceedToRetailCheckout']")).click();
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		System.out.println(driver.getTitle());
+		driver.findElement(By.xpath("//a[normalize-space()='Create your Amazon account']")).click();
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		System.out.println(driver.getTitle());
+		driver.close();
+}
+
+public class Exec {
+
+	public static void main(String[] args) throws InterruptedException {
+
+		Demo apple = new Demo();
+		apple.iphone();
+
+	}
+
+}
+	
+  
