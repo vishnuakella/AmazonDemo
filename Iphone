@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-
+public class Demo {
 
 public void iphone() {
 		
@@ -38,6 +38,7 @@ public void iphone() {
 		driver.findElement(By.xpath("//a[normalize-space()='Create your Amazon account']")).click();
 		System.out.println(driver.getTitle());
 		driver.close();
+ }
 }
 
 public class Exec {
